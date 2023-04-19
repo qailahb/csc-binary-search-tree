@@ -195,10 +195,11 @@ public class Program {
                         bst.fetch(username).addPost(title, fileName, Integer.parseInt(likes));
                     } 
                     catch (Exception e) {}
+
                 }
             }
-            //System.out.println("File loaded.");
-    
+            System.out.println("File loaded.");
+        
         } 
         catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -240,7 +241,7 @@ public class Program {
             System.out.println("6. Add a new post for an account");
             System.out.println("7. Load a file of actions from disk and process this");
             System.out.println("8. Quit\n");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
     
             try {
                 option = Integer.parseInt(scanner.nextLine());

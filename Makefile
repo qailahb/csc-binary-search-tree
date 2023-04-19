@@ -5,7 +5,7 @@ JAVADOC = /usr/bin/javadoc
 .SUFFIXES: .java .class
 SRCDIR = src
 BINDIR = bin
-DOCSDIR = javadocs
+DOCSDIR = doc
 
 build:
 	@echo "Compiling application"
@@ -27,7 +27,7 @@ run:
 	@$(JAVAC) -d $(BINDIR)/ ${SRCDIR}/*.java
 	@$(JAVA) -cp bin Program
 
-docs:
+doc:
 	@echo "Generating javadocs"
 	@mkdir -p $(DOCSDIR)
 	@$(JAVADOC) -d $(DOCSDIR)/ ${SRCDIR}/*.java

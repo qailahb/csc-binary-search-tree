@@ -1,5 +1,5 @@
 /** Account class
- *  Contains Account constructors and returns relevant data called by the Program class
+ *  Contains Account information and returns relevant data called by the Program class
  */
 
 import java.util.ArrayList;
@@ -55,7 +55,10 @@ public class Account implements Comparable<Account> {
     }
     
 
-    /** compareTo method allows the binary search tree data to be used as strings */
+    /** The compareTo method uses ASCII comparison to compare two strings 
+     *  It returns 0 if the strings are identical, <0 if the first is 'smaller' than the second and >0 if the first is greater than the second.
+     *  Note: Case sensitive
+    */
     @Override
     public int compareTo(Account other) {
         return this.username.compareTo(other.username);
