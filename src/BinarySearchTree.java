@@ -1,7 +1,10 @@
-// Binary Search Tree Class
+/** Binary Search Tree Class
+ *  Sorts through entries of text files and places into a binary tree structure
+ *  Compiled from existing binary search trees on the internet
+ */
 
 public class BinarySearchTree {
-
+    /** Class containing chidren of current node and key value */
     public class Node {
        
         public Account data;
@@ -10,6 +13,7 @@ public class BinarySearchTree {
 
         public Node(Account data) {
             this.data = data;
+            /** Declare children nodes null initially */
             this.left = null;
             this.right = null;
         }
@@ -21,7 +25,7 @@ public class BinarySearchTree {
         this.root = null;
     }
 
-    // Method to search for existing data
+    /** Method searching for existing data in tree */
     public Account fetch(String username) {
         return fetch(this.root, username);
     }
@@ -30,18 +34,21 @@ public class BinarySearchTree {
         if (root == null) {
             return null;
         } 
+
         int compareResult = root.data.getAccount().compareTo(username);
+
         if (compareResult == 0) {
             return root.data;
         } 
         else if (compareResult > 0)  {
             return fetch(root.left, username);
         }
+
         return fetch(root.right, username);
     }
 
 
-    // Method to insert new Data
+    /** Method to insert new data into tree */
     public void insert(Account newData) {
         this.root = insert(root, newData);
     }
@@ -52,7 +59,9 @@ public class BinarySearchTree {
             return root;
         }
         else {
+
             int compareResult = root.data.compareTo(newData);
+
             if (compareResult > 0) {
                 root.left = insert(root.left, newData);
             } 
@@ -60,11 +69,12 @@ public class BinarySearchTree {
                 root.right = insert(root.right, newData);
             }
         }
+
         return root;
     }
 
 
-    // Method to delete data
+    /** Method to delete data from tree */
     public void delete(String username) {
         root = delete(root, username);
     }
@@ -73,6 +83,7 @@ public class BinarySearchTree {
         if (root==null) {
             return root;
         }
+
         int compareResult = root.data.getAccount().compareTo(username);
 
         if (compareResult > 0) {
@@ -88,25 +99,31 @@ public class BinarySearchTree {
             else if (root.right==null) {
                 return root.left;
             }
+
             root.data = minimumValue(root.right);
             root.right = delete(root.right, root.data.getAccount());
         }
         return root;
     }
-
+    /** Method returning the minimum of a node's children
+     *  Used when deleting a node, and replacing it is necessary
+     */
     private Account minimumValue(Node root) {
         Account minValue = root.data;
+
         while (root.left != null) {
             minValue = root.left.data;
             root = root.left;
         }
+
         return minValue;
     }
     
 
-    // Traversal
+    /** Inorder traversal, recurring through left and then right node and printing the data of the node */
     public void inOrder() {
         inOrder(root);
+        
         System.out.println();
     }
 
@@ -122,17 +139,4 @@ public class BinarySearchTree {
 
     public static void main(String[] args) {};
 
-    // public static void main(String[] args) {
-    //     // Creating the object of BinarySearchTree class
-    //     BinarySearchTree bst = new BinarySearchTree();
-    //     // call the method insert
-    //     bst.insert(8);
-    //     bst.insert(5);
-    //     bst.insert(9);
-    //     bst.insert(3);
-    //     bst.insert(7);
-    //     bst.inOrder();
-    //     System.out.println(bst.search(7));
-        
-    // }
 }
